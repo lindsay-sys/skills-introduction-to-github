@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Tenders | DeKUT</title>
+
+  <script>
+    window.tailwind = {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              'kimathi-green': '#2E8B57',
+              'kimathi-yellow': '#FFD700',
+              'kimathi-light': '#F0FFF0',
+              'kimathi-dark': '#1A3E29',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!--tailwind CDN-->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!--Feather icon-->
+  <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+ 
+  <!--favicon-->
+  <link rel="icon" href="{% static 'favicon.ico' %}">
+</head>
+
+<body class="bg-kimathi-dark text-white font-sans">
+
+  <!--Navbar-->
+  <nav class="bg-kimathi-green text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <img src="{% static 'img/logo.png' %}" alt="DeKUT Logo" class="h-8 w-8">
+        <span class="text-lg font-semibold">DeKUT Tender System</span>
+      </div>
+      
+      <div class="hidden md:flex space-x-6">
+        <a href="{% url 'index' %}"
+        class="hover:text-kimathi-yellow">Home</a>
+        <a href="{% url 'tenders' %}"
+        class="hover:text-kimathi-yellow">Tenders</a>
+        <a href="{% url 'suppliers' %}"
+        class="hover:text-kimathi-yellow">Suppliers</a>
+        <a href="{% url 'reports' %}"
+        class="hover:text-kimathi-yellow">Reports</a>
+        <a href="{% url 'login' %}" class="bg-kimathi-yellow text-black px-3 py-1 rounded hover:bg-yellow-400">Login</a>
+      </div>
+      
+      <!--Mobile Menu Button -->
+      <button id="nav-toggle" class="md:hidden focus;outline-none">
+        <i data-feather="menu"></i>
+      </button>
+    </div>
+    
+    <!--Mobile Dropdown-->
+    <div id="mobile-menu" class="hidden md:hidden bg-kimathi-green text-center space-y-2 py-3">
+      <a href="{% url 'index' %}" class="block hover:text bg-kimathi-yellow">Home</a>
+      <a href="{% url 'tenders' %}" class="block hover:text bg-kimathi-yellow">Tenders</a>
+      <a href="{% url 'suppliers' %}" class="block hover:text bg-kimathi-yellow">Suppliers</a>
+      <a href="{%url 'reports' %}" class="block hover:text-kimathi-yellow">Reports</a>
+      <a href="{%url 'login' %}" class="block hover:text-kimathi-yellow">Login</a>
+    </div>
+  </nav> 
+
+  <!--Hero Section-->
+  <section class="text-center py-20 bg-kimathi-yellow text-kimathi-dark">
+    <h2 class="text-4xl font-bond mb-4">Welcome to DeKUT Tender Manangement System</h2>
+    <p class="text-lg mb-6">
+      Streamlining tender advertisement,application and evaluation with transparency and effieciency.
+    </p>
+    <a href="{%url 'tenders' %}"
+       class="bg-kimathi-green text-white px-6 py-3 rounded-lg hover:bg-kimthi-dark transition">
+      View Open Tenders
+    </a>
+  </section>
+  
+  <!--Test section (to confirm Tailwind colors are working)-->>
+  <section class="p-6 text-center">
+    <div class="bg-kimathi-green text-white p-4 mb-4 rounded-lg">Kimathi Green</div>
+    <div class="bg-kimathi-yellow text-black p-4 rounded-lg">Kimathi Yellow</div>
+  </section>
+  
+  <!--Footer -->
+  <footer class="bg-kimathi-dark text-white py-6 text-center mt-12">
+    <p>&copy; 2025 Dedan Kimathi University of Technology | Tender Management System</p>
+  </footer>  
+
+  <!--JavaScript-->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      feather,replace();//initialize icons
+      const toggle = document.getElementById('nav-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      toggle.addEventlistener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+</body>      

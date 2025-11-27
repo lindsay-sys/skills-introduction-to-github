@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,
+  initial-scale=1.0">
+  <title>Kimathi TenderFlow Pro | Suppliers</title>
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'kimathi-green': '#2E8B57',
+            'kimathi-yellow': '#FFD700',
+            'kimathi-light': '#F0FFF0',
+            'kimathi-dark': '#1A3E29',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<!--dark background-->
+<body class="bg-kimathi-dark text-white">
+  
+  <!--Navigation-->
+  <nav class="bg-kimathi-green text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <img src="http://static.photos/education/200x200/42"
+        alt="DKU Logo" class="h-12 rounded-full">
+        <span class="text-xl font-bold">Kimathi TenderFlow Pro</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-kimathi-yellow font-medium">Home</a>
+        <a  href="tenders.html" class="hover:text-kimathi-yellow font-medium">Tenders</a>
+        <a href="#" class="border-b-2 border-kimathi-yellow font-medium">Suppliers</a>
+        <a href="reports.html" class="hover:text-kimathi-yellow font-medium">Reports</a>
+        <a href="login.html" class="bg-kimathi-yellow text-kimathi-dark px-4 py-2 rounded-lg font-bold hover:bg-yellow-500">Login</a>
+      </div>
+      <button class="md:hidden focus:outline-none">
+        <i data-feather="menu"></i>
+      </button>
+    </div>
+  </nav>
+  
+  <!--Main Content-->
+  <main class="container mx-auto px-4 py-8">
+
+    <div class="fleex justify-between items-center mb-8">
+      <!--CHANGE-->
+      <h1 class="text-3xl font-bold text-white">Supplier Directory</h1>
+      <div class="flex space-x-4">
+        <button class="bg-kimathi-green text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
+          <i data-feather="filter" class="mr-2"></i>Add Supplier
+        </button>
+      </div>
+    </div>
+    
+    <!--Search and filter-->
+    <div class="bg-kimathi-green text-black p-6 rounded-lg shadow-md mb-8">
+      <div class="grid md:grid-cols-4 gap-4">
+        <div class="relative">
+          <input type="text" placeholder="Search suppliers..."
+          class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-kimathi-yellow">
+          <i data-feather="search" class="absolute left-3 top-3 text-gray-400"></i>
+        </div>
+        <select class="border rounded-lg px-4 py-2 text-black
+        focus:outline_none focus:ring-2 focus:ring-kimathi-yellow">
+          <option value="">All Categories</option>
+          <option value="construction">Construction</option>
+          <option value="supplies">Supplies</option>
+          <option value="services">Services</option>
+          <option value="consultancy">Consultancy</option>
+        </select>
+        <select class="border rounded-lg px-4 py-4 py-2 text-black
+        focus:outline-none focus:ring-2 focus:ring-2 focus:ring-kimathi-yellow">
+          <option value="">All Status</option>
+          <option value="active">Active</option>
+          <option value="pending">Pending</option>
+          <option value="suspended">Suspended</option>
+          <option value="blacklisted">Blacklisted</option>
+        </select>
+      </div>
+    </div>
+    
+    <!--Suppliers Grid-->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+      {% comment %} Repeated supplier cards remain identical in structure {% endcomment %}
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+        <div class="bg-kimathi-green h-2"></div>
+        <div class="p-6 text-black">
+          <div class="flex items-center space-x-4 mb-4">
+            <img src="http://static.photos/office/200x200/1"
+            alt="Supplier Logo" class="w-16 h-16 rounded-full 
+            border-2 border-kimathi-yellow">
+            <div>
+              <h3 class="text-xl font-bold">BuildRight Constructors</h3>
+              <div class="flex text-kimathi-yellow">
+                <i data-feather="star"></i>
+                <i data-feather="star"></i>
+                <i data-feather="star"></i>
+                <i data-feather="star"></i>
+                <i data-feather="star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-2 text-sm text-gray-700 mb-4">
+            <p><i data-feather="briefcase" class="inline w-4 h-4 mr-2"></i> Construction</p>
+            <p><i data-feather="map-pin" class="inline w-4 h-4 mr-2"></i> Nairobi, Kenya</p>
+            <p> <i data-feather="phone" class="inline w-4 h-4 mr-2"></i> +254 700 619 463</p>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Active</span>
+            <div class="flex space-x-2">
+              <button class="text-kimathi-green hover:text-green-700"><i data-feather="eye"></i></button>
+              <button class="text-kimathi-yellow hover:text-yellow-600"><i data-feather="edit"></i></button>
+              <button class="text-red-500 hover:text-red-700"><i data-feather="trash-2"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--repeat similiar structure for other supplier cards-->
+      </div>
+
+      <!--Pagination-->
+      <div class="mt-8 flex justify-center">
+        <nav class="inline-flex rounded-md shadow-sm">
+          <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-1-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+            <i data-feather="chevron-left" class="h-5 w-5"></i>
+          </a>
+          <a href="#" arla-current="page" class="z-10 bg-kimathi-green border-green-500 text-white relativeinline-flex items-center px-4 py-2 border text-sm font-medium">1</a>
+          <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</a>
+          <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">3</a>
+          <a href="#" class="relative inline-flex items-center px-4 py-2 rounded-r-md border border -gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+            <i data-feather="chevron-right" class="h-5 w-5"></i>
+          </a>
+        </nav>
+      </div>
+    </main>
+    
+    <!--Footer-->
+    <footer class="bg-kimathi-green text-black py-8 text-center">
+      <p>&copy; 2025 Kimathi TenderFlow Pro. All rights reserved.</p>
+    </footer>
+    
+    <script>feather.replace();</script>
+  </body>
+  </html>  
+
+

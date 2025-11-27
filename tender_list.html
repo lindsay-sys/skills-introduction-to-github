@@ -1,0 +1,57 @@
+{% extends 'tenders/base.html' %}
+
+{% block title %}Current Tenders | DeKUT TMS{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3 text-kimathi">Current Tenders</h1>
+
+  {% if user.is_staff %}
+  <a href="{% url 'create_tender' %}" class="btn btn-kimathi">
+     + Create Tender
+  </a>
+  {% endif %}
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-dark">
+         <tr>
+            <th scope="col">Ref No.</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category</th>
+            <th scope="col">Opening Date</th>
+            <th scope="col">Closing Date</th>
+            <th scope="col">Status</th>
+         </tr>   
+      </thead>
+      <tbody>
+          {% if tenders %}
+              {% for t in tenders %}
+              <tr>
+                 <td>{{ t.reference_no }}</td>
+                 <td>{{ t.title }}</td>
+                 <td>{% if t.category %}{{ t.category.name }}{% else %}N/A{% endif %}</td>
+                 <td>{{ t.opening_date|date:"M d, Y H:i" }}</td>
+                 <td>{{ t.closing_date|date:"M d, Y H:i"}}</td>
+                 <td>
+                    
+                    <span class="badge bg-kimathi">
+                        {{ t.get_status_display }}
+                    </span>
+                 </td>
+              </tr>
+              {% endfor %}
+          {% else %}
+              <tr>
+                <td colspan="6" class="text-center text-muted py-4">
+                    No open tenders available.
+                </td>
+              </tr>
+          {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}                                  
